@@ -1,0 +1,84 @@
+function FeaturedExprience() {
+  return (
+    <section class="bg-gray-50 py-24">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Featured Experiences
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Choose the kind of journey you want — we’ll take care of the rest.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <a
+            href="http://localhost:3000/places"
+            class="group relative rounded-2xl overflow-hidden shadow-lg"
+          >
+            <img
+              src="http://localhost:3000/images/temples.jpg"
+              alt="Temple Tours"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute bottom-6 left-6 text-white">
+              <h3 class="text-2xl font-semibold">Temple Tours</h3>
+              <p class="text-sm text-white/80">Spiritual & peaceful journeys</p>
+            </div>
+          </a>
+
+          <a
+            href="http://localhost:3000/places"
+            class="group relative rounded-2xl overflow-hidden shadow-lg"
+          >
+            <img
+              src="http://localhost:3000/images/hills.jpg"
+              alt="Hill Stations"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute bottom-6 left-6 text-white">
+              <h3 class="text-2xl font-semibold">Hill Stations</h3>
+              <p class="text-sm text-white/80">Cool weather & scenic views</p>
+            </div>
+          </a>
+
+          <a
+            href="http://localhost:3000/places"
+            class="group relative rounded-2xl overflow-hidden shadow-lg"
+          >
+            <img
+              src="http://localhost:3000/images/beach.jpg"
+              alt="Beach Getaways"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute bottom-6 left-6 text-white">
+              <h3 class="text-2xl font-semibold">Beach Getaways</h3>
+              <p class="text-sm text-white/80">Relax by the ocean</p>
+            </div>
+          </a>
+
+          <a
+            href="http://localhost:3000/places"
+            class="group relative rounded-2xl overflow-hidden shadow-lg"
+          >
+            <img
+              src="http://localhost:3000/images/city2.jpg"
+              alt="City Escapes"
+              class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute bottom-6 left-6 text-white">
+              <h3 class="text-2xl font-semibold">City Escapes</h3>
+              <p class="text-sm text-white/80">Explore vibrant city life</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default FeaturedExprience;

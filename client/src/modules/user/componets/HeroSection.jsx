@@ -1,0 +1,81 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+function Hero() {
+  return (
+    <>
+      <section class="relative h-[100vh] flex items-center justify-center">
+        <img
+          src="http://localhost:3000/images/beach.jpg"
+          class="absolute w-full h-full object-cover"
+        />
+        <div class="absolute w-full h-full bg-black/50"></div>
+
+        <div class="relative text-center text-white px-6 max-w-2xl">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4">
+            Explore The World With Us
+          </h1>
+          <p class="text-lg md:text-xl mb-8">
+            Find your perfect holiday package — from mountains to beaches, we
+            have it all.
+          </p>
+          <Search />
+          <ExploreButtons />
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Search() {
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!search.trim()) return;
+    navigate(`/search?q=${search}`);
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      action="http://localhost:3000/api/v1/search"
+      method="GET"
+      class="flex bg-white rounded-xl overflow-hidden shadow-lg"
+    >
+      <input
+        type="text"
+        name="q"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        class="w-full px-4 py-3 text-gray-700 focus:outline-none"
+        placeholder="Search destinations..."
+      />
+      <button class="bg-blue-600 px-6 text-white font-semibold hover:bg-blue-700">
+        Search
+      </button>
+    </form>
+  );
+}
+
+function ExploreButtons() {
+  return (
+    <div class="mt-6 flex justify-center gap-4">
+      <a
+        href="/user/packages"
+        class="px-6 py-3 bg-blue-600 rounded-xl hover:bg-blue-700 font-semibold"
+      >
+        Explore Hotels
+      </a>
+
+      <a
+        href="/places"
+        class="px-6 py-3 border border-white rounded-xl hover:bg-white hover:text-black font-semibold"
+      >
+        places
+      </a>
+    </div>
+  );
+}
+export default Hero;
