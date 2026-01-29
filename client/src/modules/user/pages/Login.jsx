@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthContext } from "../auth/AuthContext";
 
 function Google() {
   return (
@@ -30,10 +30,12 @@ function SignUpLink() {
 }
 
 function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
-    passsword: "",
+    password: "",
   });
+  const { setIsLoggedIn } = useContext(AuthContext);
 
   function handleChange(e) {
     setFormData({
@@ -41,35 +43,45 @@ function Login() {
       [e.target.name]: e.target.value,
     });
   }
+  useEffect(() => {
+    setFormData({ email: "example@gmail.com", password: "1234" });
+  }, []);
   async function handleSubmit(e) {
     try {
       e.preventDefault();
 
-      const responce = await axios.post(
-        "http://localhost:3000/api/v1/login",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const { status, data } = responce;
-      if (status >= 200 && status < 300) {
-        toast.success(data?.message || "Login successfull");
-        setFormData({
-          email: "",
-          passsword: "",
-        });
-      } else {
-        toast.error(data?.message || "Failed to Login,please try again later");
+      const response = await fetch("http://localhost:3000/api/v1/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      switch (data.status) {
+        case 200:
+          setIsLoggedIn(true);
+          return navigate("/");
+
+        case 401:
+          toast.error(data.message);
+          break;
+        case 500:
+          toast.error(data.message);
+          break;
+        default:
+          toast.error(data.message || "An error occurred");
       }
+      console.log(data);
     } catch (error) {
-      console.log("STATUS:", error.response?.status);
-      console.log("SERVER MESSAGE:", error.response?.data);
+      toast.error("Network error. Please try again.", error.message);
     }
   }
-  console.log("Fronm:", formData);
+
+  // console.log("Form:", formData);
+
   return (
     <div
       className="h-screen w-screen bg-cover bg-center"
@@ -89,8 +101,9 @@ function Login() {
           <LoginForm
             formData={formData}
             onSubmit={handleSubmit}
-            onChnage={handleChange}
+            onChange={handleChange}
           />
+
           <SignUpLink />
         </div>
       </div>
@@ -100,13 +113,14 @@ function Login() {
 
 function LoginForm({ formData, onChange, onSubmit }) {
   return (
-    <form onSubmit={onSubmit} class="space-y-4">
+    <form autoComplete="off" onSubmit={onSubmit} class="space-y-4">
       <div>
         <label class="text-white font-medium">Email</label>
         <input
           onChange={onChange}
-          value={formData.name}
+          value={formData.email}
           type="email"
+          autoComplete="off"
           name="email"
           required
           class="w-full mt-1 px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 focus:ring-2 focus:ring-blue-300 outline-none"
@@ -117,6 +131,8 @@ function LoginForm({ formData, onChange, onSubmit }) {
         <label class="text-white font-medium">Password</label>
         <input
           onChange={onChange}
+          value={formData.password}
+          autoComplete="off"
           type="password"
           name="password"
           required

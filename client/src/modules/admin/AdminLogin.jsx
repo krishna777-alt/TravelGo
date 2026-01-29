@@ -1,12 +1,70 @@
 function Login() {
   return (
-    <div>
-      <p>Login</p>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input type="email" />
-        <label htmlFor="password">Password</label>
-        <input type="text" />
+    <div class="min-h-screen flex items-center justify-center bg-gray-100 p-6">
+      <div class="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
+        <div class="text-center mb-8">
+          <div class="text-3xl font-extrabold text-blue-600 tracking-wide">
+            Trip Next
+          </div>
+          <p class="text-gray-600 text-lg mt-1">Admin Panel</p>
+        </div>
+
+        <form action="/admin/login" method="POST">
+          <div class="mb-5">
+            <label class="block text-gray-700 font-medium mb-1">
+              Email Address
+            </label>
+            <input
+              name="email"
+              type="email"
+              placeholder="admin@example.com"
+              class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+
+          <div class="mb-5">
+            <label class="block text-gray-700 font-medium mb-1">Password</label>
+            <div class="relative">
+              <input
+                name="password"
+                type="password"
+                placeholder="••••••••"
+                id="password"
+                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+              <button
+                type="button"
+                onclick="togglePass()"
+                class="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500"
+              >
+                👁️
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mb-6">
+            <label class="flex items-center gap-2 text-gray-700">
+              <input name="remember" type="checkbox" class="w-4 h-4" /> Remember
+              Me
+            </label>
+            <a href="#" class="text-blue-600 text-sm hover:underline">
+              Forgot Password?
+            </a>
+          </div>
+
+          <button class="w-full bg-blue-600 text-white p-3 rounded-lg text-lg font-semibold hover:bg-blue-700">
+            Login
+          </button>
+        </form>
+
+        <div class="text-center mt-6">
+          <a href="#" class="text-gray-600 text-sm hover:underline">
+            Back to main website
+          </a>
+          <p class="text-gray-400 text-xs mt-2">
+            © 2025 Trip Next Admin Portal
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -1,8 +1,14 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { AuthContext } from "../auth/AuthContext";
+import LoadingSpinner from "./LoadingSpinner";
 
 function Navbar() {
-  const [isUser, setIsUser] = useState(false);
+  const { isLoggedIn, loading } = useContext(AuthContext);
+  // const [isUser, setIsUser] = useState(false);
+  if (loading) {
+    return null;
+  }
 
   return (
     <nav class="bg-white shadow-md sticky top-0 z-50">
@@ -11,38 +17,8 @@ function Navbar() {
           TravelGo
         </a>
 
-        <ul class="hidden md:flex gap-8 text-gray-700 font-medium">
-          <li>
-            {/* <a href="/" class="hover:text-blue-600">
-              Home
-            </a> */}
-            {/* <Link to="/">Home</Link> */}
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            {/* <a href="/places" class="hover:text-blue-600">
-              Places
-            </a> */}
-            <NavLink to="/places">Places</NavLink>
-          </li>
-          <li>
-            <a href="/hotels" class="hover:text-blue-600">
-              Hotels
-            </a>
-          </li>
-          {/* <li><a href="/Package" class="hover:text-blue-600">Package</a></li> */}
-          <li>
-            {/* <a href="/about" class="hover:text-blue-600">
-              About
-            </a> */}
-            <NavLink to="/about">About</NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact">Contact</NavLink>
-          </li>
-        </ul>
-
-        {!isUser ? (
+        <NavBarElements />
+        {!isLoggedIn ? (
           <div class="flex gap-4">
             <a
               href="/login"
@@ -66,7 +42,7 @@ function Navbar() {
               Account
             </a>
             <a
-              href="/user/logout"
+              href="/logout"
               class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
             >
               Logout
@@ -75,6 +51,31 @@ function Navbar() {
         )}
       </div>
     </nav>
+  );
+}
+
+function NavBarElements() {
+  return (
+    <ul class="hidden md:flex gap-8 text-gray-700 font-medium">
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/places">Places</NavLink>
+      </li>
+      <li>
+        <NavLink to="/hotels" class="hover:text-blue-600">
+          Hotels
+        </NavLink>
+      </li>
+      {/* <li><a href="/Package" class="hover:text-blue-600">Package</a></li> */}
+      <li>
+        <NavLink to="/about">About</NavLink>
+      </li>
+      <li>
+        <NavLink to="/contact">Contact</NavLink>
+      </li>
+    </ul>
   );
 }
 
