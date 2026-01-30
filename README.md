@@ -92,13 +92,13 @@ TravelGo is a full-stack **MERN (MongoDB, Express, React, Node.js)** web applica
 ---
 
 ## ⚙️ Setup .env file
-
+```bash
 PORT=3000
 
 MONGO_URI=your_mongodb_connection_string
 
 JWT_SECRET=your_secret_key
-
+```
 
 <img width="1918" height="1918" alt="Screenshot 2026-01-10 at 15-22-32 " src="https://github.com/user-attachments/assets/bf4e4563-7522-4ef1-b512-f016f0838139" />
 <img width="1920" height="994" alt="home1" src="https://github.com/user-attachments/assets/a14eedc9-6b38-416d-a927-e248bd6ef877" />
@@ -109,3 +109,27 @@ JWT_SECRET=your_secret_key
 ```bash
 git clone https://github.com/your-username/TravelGo.git
 cd TravelGo
+```
+
+```md
+
+MIT License
+Copyright (c) 2026 TravelGo
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
