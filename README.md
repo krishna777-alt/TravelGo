@@ -1,3 +1,11 @@
+⚠️ Project Status: Under Active Development
+
+This project is currently under active development.
+Some features may be incomplete, experimental, or subject to change.
+Bugs or unexpected behavior may occur as new updates are being implemented.
+The codebase may change frequently as improvements and new features are added.
+Use this project for learning and testing purposes at this stage.
+
 # 🌍 TravelGo – MERN Stack Travel & Hotel Booking Platform
 
 TravelGo is a full-stack **MERN (MongoDB, Express, React, Node.js)** web application designed to simplify travel planning. It allows users to explore destinations, hotels, and rooms, view rich image galleries, and book stays through a modern and responsive interface.
